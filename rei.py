@@ -6,6 +6,41 @@ window.geometry("500x500")
 window.config(bg="#1f2d3a")
 window.resizable(True, True)
 
+#Menu bar
+menu_bar = tk.Menu(window)
+window['menu'] = menu_bar
+
+file_dropdown = tk.Menu(menu_bar, tearoff= 0 )
+file_dropdown.add_command(label="New")
+file_dropdown.add_command(label="Open")
+file_dropdown.add_command(label="Exit")
+
+menu_bar.add_cascade(label="File", font= ("arial", 17, "bold"),
+                     menu=file_dropdown)
+
+view_menu = tk.Menu(menu_bar,tearoff=1)
+view_menu.add_command(label="Zoom")
+view_menu.add_command(label="Resize")
+
+menu_bar.add_cascade(label="View",menu=view_menu)
+
+edit_menu = tk.Menu(menu_bar, tearoff= 1)
+edit_menu.add_command(label="front")
+edit_menu.add_command(label="back")
+
+menu_bar.add_cascade(label="Edit", menu=edit_menu)
+
+popup = tk.Toplevel(window)
+popup.title('Sir Mark')
+popup.geometry('300x200')
+popup.resizable(False, False)
+popup.config(bg="light gray")
+popup.transient(window)
+popup.grab_set()
+
+label = tk.Label(popup, text="Hello Lord",
+                 font= ('arial', 16, 'italic')).pack()
+
 # ===== Title =====
 label = tk.Label(window,
                 text="HI HELLO!",
@@ -15,19 +50,19 @@ label = tk.Label(window,
 label.pack(pady=15)
 
 # ===== Image =====
-# img = tk.PhotoImage(file=r"C:\Users\ITLAB1-StudentPC01\Desktop\1A\testtk\librun.png")
-# img = img.subsample(4, 4)
+img = tk.PhotoImage(file=r"C:\Users\ITLAB1-StudentPC01\Desktop\1A\testtk\librun.png")
+img = img.subsample(6, 6)
 
-# img_label = tk.Label(window,
-#                     image=img,
-#                     text="This is Librun",
-#                     compound="top",
-#                     bg="#2e4053",
-#                     fg="white",
-#                     font=("Arial", 12),
-#                     padx=30,
-#                     pady=20)
-# img_label.pack(pady=20)
+img_label = tk.Label(window,
+                    image=img,
+                    text="This is Librun",
+                    compound="top",
+                    bg="#2e4053",
+                    fg="white",
+                    font=("Arial", 12),
+                    padx=30,
+                    pady=20)
+img_label.pack(pady=20)
 
 # ===== Frame =====
 frame = tk.Frame(window, bg="#34495e", width=300, height=120)
@@ -45,7 +80,7 @@ name_label.pack(pady=(10, 5))
 name_entry = tk.Entry(frame,
                       bg="#ecf0f1",
                       fg="#2c3e50",
-                      width=25)
+                      width=20)
 name_entry.pack(pady=(0, 10))
 
 pass_label=tk.Label(frame,
@@ -120,10 +155,66 @@ button.pack(pady=20)
 listbox_Lbl=tk.Label(frame, text= "Choose!")
 listbox_Lbl.pack(pady=10)
 
+scroll = tk.Scrollbar(frame)
+scroll.pack(side= "right",
+            fill= "y")
+
+screll = tk.Scrollbar(frame, orient="horizontal")
+screll.pack(side= "bottom",
+            fill= "x")
+
 listbox= tk.Listbox(frame,selectmode= "multiple")
+listbox.insert(0, "Python nimong mama plus imong ")
+listbox.insert(1, "C#")
+listbox.insert(2, "Perl")
+listbox.insert(3, "Java")
 listbox.insert(0, "Python")
 listbox.insert(1, "C#")
 listbox.insert(2, "Perl")
 listbox.insert(3, "Java")
+listbox.insert(0, "Python")
+listbox.insert(1, "C#")
+listbox.insert(2, "Perl")
+listbox.insert(3, "Java")
+listbox.insert(0, "Python")
+listbox.insert(1, "C#")
+listbox.insert(2, "Perl")
+listbox.insert(3, "Java")
+listbox.insert(0, "Python")
+# listbox.insert(1, "C# sigeeeeeeeeeeeeee, mason ako gagu")
+# listbox.insert(2, "Perl")
+# listbox.insert(3, "Java")
+# listbox.insert(0, "Python")
+# listbox.insert(1, "C#")
+# listbox.insert(2, "Perl")
+# listbox.insert(3, "Java")
+# listbox.insert(0, "Python")
+# listbox.insert(1, "C#")
+# listbox.insert(2, "Perl")
+# listbox.insert(3, "Java")
+# listbox.insert(0, "Python")
+# listbox.insert(1, "C#")
+# listbox.insert(2, "Perl")
+# listbox.insert(3, "Java")
+# listbox.insert(0, "Python")
+# listbox.insert(1, "C#")
+# listbox.insert(2, "Perl")
+# listbox.insert(3, "Java")
+# listbox.insert(0, "Python")
+# listbox.insert(1, "C#")
+# listbox.insert(2, "Perl")
+# listbox.insert(3, "Java")
+# listbox.insert(0, "Python")
+# listbox.insert(1, "C#")
+# listbox.insert(2, "Perl")
+# listbox.insert(3, "Java")
+# listbox.insert(0, "Python")
+# listbox.insert(1, "C#")
+# listbox.insert(2, "Perl")
+# listbox.insert(3, "Java")
 listbox.pack(pady=10)
+
+scroll["command"] = listbox.yview
+screll['command'] = listbox.xview
+
 window.mainloop()
