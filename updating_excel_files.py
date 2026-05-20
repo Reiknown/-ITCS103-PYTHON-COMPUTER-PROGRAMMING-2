@@ -73,8 +73,9 @@ def update():
 
     if not selected:
         messagebox.showerror("Error", "Select a record first!")
+        return
 
-    if not input_validation:
+    if not input_validation():
         return
     
     values = table.item(selected, "values")
@@ -106,6 +107,7 @@ def delete():
 
     if not selected:
         messagebox.showerror("Error", "Select a record first!")
+        return
     
     values = table.item(selected, "values")
     record_id = values[0]
